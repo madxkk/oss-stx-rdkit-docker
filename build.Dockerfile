@@ -1,4 +1,4 @@
-FROM bitnami/minideb:buster
+FROM docker:stable
 LABEL maintainer="madxkk@xaked.com"
 
 WORKDIR /w
