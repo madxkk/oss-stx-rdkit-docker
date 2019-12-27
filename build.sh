@@ -37,6 +37,8 @@ docker build $DBO -f cartridge.Dockerfile\
   --build-arg DOCKER_TAG=$DOCKER_TAG .
 echo "Built image $BASE/oss-stx-rdkit-cartridge:$DOCKER_TAG"
 
+docker login --username=$DOCKER_USER --password=$DOCKER_PASSWORD
+
 docker push $BASE/oss-stx-rdkit-core:$DOCKER_TAG
 docker push $BASE/oss-stx-rdkit-core:latest
 docker push $BASE/oss-stx-rdkit-python3:$DOCKER_TAG
