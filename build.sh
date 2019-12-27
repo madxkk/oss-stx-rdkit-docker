@@ -2,7 +2,7 @@
 
 set -xe
 
-source params.sh
+# source params.sh
 
 DBO=${DOCKER_BUILD_OPTS:---no-cache}
 
@@ -33,3 +33,7 @@ docker build $DBO -f cartridge.Dockerfile\
   -t $BASE/oss-stx-rdkit-cartridge:$DOCKER_TAG\
   --build-arg DOCKER_TAG=$DOCKER_TAG .
 echo "Built image $BASE/oss-stx-rdkit-cartridge:$DOCKER_TAG"
+
+docker push $BASE/oss-stx-rdkit-core:$DOCKER_TAG
+docker push $BASE/oss-stx-rdkit-python3:$DOCKER_TAG
+docker push $BASE/oss-stx-rdkit-cartridge:$DOCKER_TAG

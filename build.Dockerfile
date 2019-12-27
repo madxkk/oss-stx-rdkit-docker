@@ -9,4 +9,5 @@ ENV GIT_REPO https://github.com/rdkit/rdkit.git
 ENV GIT_BRANCH Release_2019_09
 ENV BASE madxkk
 
-RUN echo $DOCKER_TAG
+RUN echo "DOCKER_TAG=$DOCKER_TAG GIT_BRANCH=$GIT_BRANCH no tag" &&\
+ /bin/bash ./build
