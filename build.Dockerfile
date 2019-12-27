@@ -4,7 +4,7 @@ LABEL maintainer="madxkk@xaked.com"
 WORKDIR /w
 COPY . .
 
-ENV DOCKER_TAG latest
+ENV DOCKER_TAG v1.0.0
 ENV GIT_REPO https://github.com/rdkit/rdkit.git
 ENV GIT_BRANCH Release_2019_09
 ENV BASE madxkk

@@ -9,6 +9,7 @@ DBO=${DOCKER_BUILD_OPTS:---no-cache}
 # build RDKit
 docker build $DBO -f core.Dockerfile\
   -t $BASE/oss-stx-rdkit-core:$DOCKER_TAG\
+  -t $BASE/oss-stx-rdkit-core:latest\
   --build-arg GIT_REPO=$GIT_REPO\
   --build-arg GIT_BRANCH=$GIT_BRANCH\
   --build-arg GIT_TAG=$GIT_TAG .
@@ -25,15 +26,20 @@ docker run -it --rm -u $(id -u)\
 # build image for python3 on debian
 docker build $DBO -f python3.Dockerfile\
   -t $BASE/oss-stx-rdkit-python3:$DOCKER_TAG\
+  -t $BASE/oss-stx-rdkit-python3:latest\
   --build-arg DOCKER_TAG=$DOCKER_TAG .
 echo "Built image $BASE/oss-stx-rdkit-python3:$DOCKER_TAG"
 
 # build image for postgresql cartridge on debian
 docker build $DBO -f cartridge.Dockerfile\
   -t $BASE/oss-stx-rdkit-cartridge:$DOCKER_TAG\
+  -t $BASE/oss-stx-rdkit-cartridge:latest\
   --build-arg DOCKER_TAG=$DOCKER_TAG .
 echo "Built image $BASE/oss-stx-rdkit-cartridge:$DOCKER_TAG"
 
 docker push $BASE/oss-stx-rdkit-core:$DOCKER_TAG
+docker push $BASE/oss-stx-rdkit-core:latest
 docker push $BASE/oss-stx-rdkit-python3:$DOCKER_TAG
+docker push $BASE/oss-stx-rdkit-python3:latest
 docker push $BASE/oss-stx-rdkit-cartridge:$DOCKER_TAG
+docker push $BASE/oss-stx-rdkit-cartridge:latest
