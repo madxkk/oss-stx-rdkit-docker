@@ -2,7 +2,7 @@
 
 set -xe
 
-# source params.sh
+source params.sh
 
 DBO=${DOCKER_BUILD_OPTS:---no-cache}
 

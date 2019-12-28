@@ -1,4 +1,4 @@
-FROM bitnami/minideb:buster
+FROM debian:buster
 LABEL maintainer="madxkk@xaked.com"
 
 WORKDIR /w
@@ -28,5 +28,6 @@ RUN apt-get update &&\
   docker-ce-cli &&\
   apt-get clean -y &&\
   echo "DOCKER_TAG=$DOCKER_TAG GIT_BRANCH=$GIT_BRANCH no tag" &&\
-  chmod 777 build.sh &&\
-  /bin/bash /w/build.sh
+  chmod 777 build.sh
+
+RUN nohup dockerd && /w/build.sh
